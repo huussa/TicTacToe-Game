@@ -31,3 +31,31 @@ function cellUpdate(cell, index){
     options[index] = playerTurn;
     cell.textContent = playerTurn;
 }
+function changePlayer(){
+    playerTurn = (playerTurn == "X") ? "O" : "X";
+    statusText.textContent = `${playerTurn}'s Turn`;
+}
+function checkWinner(){
+    let roundWon = false;
+    for (let index = 0; index < winsConditions.length; index++) {
+        const condition = winsConditions[index];
+        const cellA = options[condition[0]];
+        const cellB = options[condition[1]];
+        const cellC = options[condition[2]];
+        if (cellA == "" || cellB == "" || cellC == ""){
+            continue;
+        }
+        if (cellA == cellB && cellB == cellC){
+            roundWon = true;
+            break;
+        }
+    }
+    if (roundWon){
+        statusText.textContent = `${playerTurn} is the Winner`;
+        running = false
+    } else if (!options.includes("")){
+        statusText.textContent = "No one wins, it's Draw";
+    } else {
+        changePlayer()
+    }
+}

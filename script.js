@@ -15,6 +15,8 @@ let options = ["", "", "", "", "", "", "", "", ""];
 let playerTurn = "X";
 let running = true;
 
+events()
+
 function events(){
     cells.forEach(cell => cell.addEventListener("click", cellClicked));
     statusText.textContent = `${playerTurn}'s Turn`;
@@ -66,4 +68,3 @@ function reset(){
     running = true;
     statusText.textContent = `${playerTurn}'s Turn`;
 }
-events()

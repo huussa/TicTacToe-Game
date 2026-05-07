@@ -59,3 +59,11 @@ function checkWinner(){
         changePlayer()
     }
 }
+function reset(){
+    cells.forEach(cell => cell.textContent = "");
+    options = ["", "", "", "", "", "", "", "", ""];
+    playerTurn = "X";
+    running = true;
+    statusText.textContent = `${playerTurn}'s Turn`;
+}
+events()

@@ -15,3 +15,19 @@ let options = ["", "", "", "", "", "", "", "", ""];
 let playerTurn = "X";
 let running = true;
 
+function events(){
+    cells.forEach(cell => cell.addEventListener("click", cellClicked));
+    statusText.textContent = `${playerTurn}'s Turn`;
+}
+function cellClicked(){
+    const cellIndex = this.getAttribute("cellIndex")
+    if (options[cellIndex] != "" || !running){
+        return;
+    }
+    cellUpdate(this, cellIndex);
+    checkWinner();
+}
+function cellUpdate(cell, index){
+    options[index] = playerTurn;
+    cell.textContent = playerTurn;
+}
